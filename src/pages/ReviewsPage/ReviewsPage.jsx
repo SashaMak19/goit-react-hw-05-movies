@@ -8,7 +8,7 @@ const ReviewsPage = () => {
 
   useEffect(() => {
     fetchReviewsById(id).then(({ data }) => setReviews(data.results));
-  }, []);
+  }, [id]);
 
   return (
     <>
