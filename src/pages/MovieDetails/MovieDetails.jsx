@@ -37,6 +37,7 @@ const MovieDetails = () => {
       .catch(error => console.error(error));
   }, [id]);
 
+  const { from } = location.state;
   const backLink = location.state?.from ?? '/movies';
 
   return (
@@ -48,10 +49,14 @@ const MovieDetails = () => {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ from }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from }}>
+              Reviews
+            </Link>
           </li>
         </ul>
         <Outlet />

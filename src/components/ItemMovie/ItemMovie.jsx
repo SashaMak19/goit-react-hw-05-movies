@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 const ItemMovie = ({ movies }) => {
   const location = useLocation();
-  // console.log(location);
+  console.log(location);
 
   return movies.map(({ id, title }) => (
     <li key={id}>
