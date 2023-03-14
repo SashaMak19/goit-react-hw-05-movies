@@ -1,6 +1,7 @@
 import { fetchCreditsById } from 'services/movie-database-API';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { CastList, CastItem } from './CastPage.styled';
 
 const CastPage = () => {
   const [credits, setCredits] = useState([]);
@@ -15,9 +16,9 @@ const CastPage = () => {
   return (
     <>
       {credits.length < 1 && <p>We don't have any casts for this movie.</p>}
-      <ul>
+      <CastList>
         {credits.map(({ character, profile_path, name }, index) => (
-          <li key={index}>
+          <CastItem key={index}>
             {profile_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/original/${profile_path}`}
@@ -33,12 +34,11 @@ const CastPage = () => {
                 width="150"
               />
             )}
-
             {name}
             {character && <p>Character: {character}</p>}
-          </li>
+          </CastItem>
         ))}
-      </ul>
+      </CastList>
     </>
   );
 };

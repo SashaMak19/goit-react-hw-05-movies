@@ -8,4 +8,4 @@ const HomePage = ({ trendingMovies }) => {
   );
 };
 
-export { HomePage };
+export default HomePage;

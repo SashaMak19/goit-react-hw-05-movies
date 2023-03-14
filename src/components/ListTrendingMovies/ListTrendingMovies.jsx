@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/movie-database-API';
 import { ItemMovie } from 'components/ItemMovie/ItemMovie';
+import { List } from './ListTrendingMovies.styled';
 
 const ListTrendingMovies = () => {
   const [movies, setTrendingMovies] = useState([]);
@@ -12,9 +13,9 @@ const ListTrendingMovies = () => {
   }, []);
 
   return (
-    <ul>
+    <List>
       <ItemMovie movies={movies} />
-    </ul>
+    </List>
   );
 };
 

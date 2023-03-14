@@ -1,10 +1,16 @@
 import { fetchReviewsById } from 'services/movie-database-API';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import {
+  ReviewList,
+  ReviewItem,
+  ReviewText,
+  ReviewSpan,
+} from './ReviewsPage.styled';
 
 const ReviewsPage = () => {
-  const { id } = useParams();
   const [reviews, setReviews] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     fetchReviewsById(id).then(({ data }) => setReviews(data.results));
@@ -13,14 +19,14 @@ const ReviewsPage = () => {
   return (
     <>
       {reviews.length < 1 && <p>We don't have any reviews for this movie.</p>}
-      <ul>
+      <ReviewList>
         {reviews.map(({ author, content }, index) => (
-          <li key={index}>
-            Author: {author}
-            <p>{content}</p>
-          </li>
+          <ReviewItem key={index}>
+            <ReviewSpan> Author:</ReviewSpan> {author}
+            <ReviewText>{content}</ReviewText>
+          </ReviewItem>
         ))}
-      </ul>
+      </ReviewList>
     </>
   );
 };

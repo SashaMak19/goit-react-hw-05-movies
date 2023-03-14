@@ -1,10 +1,11 @@
 import { ItemMovie } from 'components/ItemMovie/ItemMovie';
+import { List } from './ListSearch.styled';
 
 const ListSearch = ({ movies }) => {
   return (
-    <ul>
+    <List>
       <ItemMovie movies={movies} />
-    </ul>
+    </List>
   );
 };
 

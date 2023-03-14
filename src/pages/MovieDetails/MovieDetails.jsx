@@ -1,14 +1,15 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMovieById } from '../../services/movie-database-API';
-import { Link, Outlet } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
+import { MovieAddInformation } from 'components/MovieAddInformation/MovieAddInformation';
+import { Button, SpanForSVG } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
-  // console.log(location.state.from);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovieById(id)
@@ -37,30 +38,19 @@ const MovieDetails = () => {
       .catch(error => console.error(error));
   }, [id]);
 
-  const { from } = location.state;
-  const backLink = location.state?.from ?? '/movies';
+  const backLink = location.state?.from ?? 'movies';
 
   return (
     <>
-      {/* <button onClick={}>Go back</button> */}
-      <Link to={backLink}>Go back</Link>
+      <Button type="click" onClick={() => navigate(backLink)}>
+        <SpanForSVG>
+          <svg width="28" height="28" viewBox="0 0 24 24">
+            <path d="M8.59 12L14.59 6L16 7.41L11.83 11H20v2H11.83L16 16.59L14.59 18L8.59 12Z" />
+          </svg>
+        </SpanForSVG>
+      </Button>
       <MovieInfo movie={movie} />
-      <div>
-        <h3>Additional information</h3>
-        <ul>
-          <li>
-            <Link to="cast" state={{ from }}>
-              Cast
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" state={{ from }}>
-              Reviews
-            </Link>
-          </li>
-        </ul>
-        <Outlet />
-      </div>
+      <MovieAddInformation />
     </>
   );
 };

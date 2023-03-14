@@ -1,3 +1,12 @@
+import {
+  MovieContainer,
+  MovieInformation,
+  MovieTitle,
+  MovieDescription,
+  MovieSpan,
+  MovieImage,
+} from './MovieInfo.styled';
+
 const MovieInfo = ({ movie }) => {
   const { title, vote_average, overview, poster_path, genres, release_date } =
     movie;
@@ -5,17 +14,29 @@ const MovieInfo = ({ movie }) => {
   const scores = vote_average * 100;
 
   return (
-    <div>
-      <img src={poster_path} alt={title} width="300" />
-      <h2>
-        {title} {release_date}
-      </h2>
-      {vote_average === '0' && (
-        <p>User Score: {scores.toString().slice(0, 2)}%</p>
-      )}
-      {overview && <p>Overview: {overview}</p>}
-      {genres && <p>Genres: {genres}</p>}
-    </div>
+    <MovieContainer>
+      <MovieImage src={poster_path} alt={title} width="300" />
+      <MovieInformation>
+        <MovieTitle>
+          {title} {release_date}
+        </MovieTitle>
+        {vote_average === '0' && (
+          <MovieDescription>
+            <MovieSpan>User Score:</MovieSpan> {scores.toString().slice(0, 2)}%
+          </MovieDescription>
+        )}
+        {overview && (
+          <MovieDescription>
+            <MovieSpan>Overview:</MovieSpan> {overview}
+          </MovieDescription>
+        )}
+        {genres && (
+          <MovieDescription>
+            <MovieSpan>Genres:</MovieSpan> {genres}
+          </MovieDescription>
+        )}
+      </MovieInformation>
+    </MovieContainer>
   );
 };
 
