@@ -1,7 +1,7 @@
 import { ItemMovie } from 'components/ItemMovie/ItemMovie';
-import { List } from './ListSearch.styled';
+import { List } from './ListMovies.styled';
 
-const ListSearch = ({ movies }) => {
+const ListMovies = ({ movies }) => {
   return (
     <List>
       <ItemMovie movies={movies} />
@@ -9,4 +9,4 @@ const ListSearch = ({ movies }) => {
   );
 };
 
-export { ListSearch };
+export { ListMovies };

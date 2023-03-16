@@ -3,10 +3,12 @@ import { Item, StyledLink } from './ItemMovie.styled';
 
 const ItemMovie = ({ movies }) => {
   const location = useLocation();
+  // console.log(location);
 
   return movies.map(({ id, title, poster_path }) => (
     <Item key={id}>
       <StyledLink to={`/movies/${id}`} state={{ from: location }}>
+        {/* <StyledLink to={`/movies/${id}`}> */}
         {poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/original/${poster_path}`}

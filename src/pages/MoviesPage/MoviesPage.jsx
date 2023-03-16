@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieBySearch } from 'services/movie-database-API';
 import { Form } from '../../components/Form/Form';
-import { ListSearch } from 'components/ListSearch/ListSearch';
+import { ListMovies } from 'components/ListMovies/ListMovies';
 import { useSearchParams } from 'react-router-dom';
 
 const MoviePage = () => {
@@ -22,7 +22,7 @@ const MoviePage = () => {
   return (
     <>
       <Form onSubmit={updateQueryString} />
-      <ListSearch movies={movies} />
+      <ListMovies movies={movies} />
     </>
   );
 };

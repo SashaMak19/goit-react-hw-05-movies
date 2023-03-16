@@ -1,9 +1,19 @@
-import ListTrendingMovies from 'components/ListTrendingMovies/ListTrendingMovies';
+import { useState, useEffect } from 'react';
+import { fetchTrendingMovies } from 'services/movie-database-API';
+import { ListMovies } from 'components/ListMovies/ListMovies';
 
-const HomePage = ({ trendingMovies }) => {
+const HomePage = () => {
+  const [movies, setTrendingMovies] = useState([]);
+
+  useEffect(() => {
+    fetchTrendingMovies().then(({ data }) => {
+      setTrendingMovies(data.results);
+    });
+  }, []);
+
   return (
     <>
-      <ListTrendingMovies trendingMovies={trendingMovies} />
+      <ListMovies movies={movies} />
     </>
   );
 };
