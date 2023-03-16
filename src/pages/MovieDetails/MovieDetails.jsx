@@ -40,8 +40,6 @@ const MovieDetails = () => {
   }, [id]);
 
   const backLink = location.state?.from ?? 'movies';
-  // console.log(location.state.from);
-  // console.log(location.state);
 
   return (
     <>
@@ -53,7 +51,7 @@ const MovieDetails = () => {
         </SpanForSVG>
       </Button>
       <MovieInfo movie={movie} />
-      <MovieAddInformation id={id} />
+      <MovieAddInformation />
     </>
   );
 };
